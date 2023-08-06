@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1, h4 {
+            text-align: center;
+            color: #333333;
+        }
+        
+        p {
+            text-align: center;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+        
+        .centered-input {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .centered-button {
+            display: flex;
+            justify-content: center;
+        }
+        
+        input[type="number"],
+        input[type="submit"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+        
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tijaabi nasiibkaaga</h1>
+        <p>Si aad ugulaysatid dooro 1 ilaa 1000 Mahadsanid.</p>
+
+    </br>
+    <h4>Usii Share garee ugu yaraan 10 qof si ay ubadato fursadaada gulaysiga</h4>
+        <form>
+            <div class="centered-input">
+                <input type="number" name="number" min="1" max="1000" placeholder="Enter a number between 1 and 1000" required>
+            </div>
+            <div class="centered-button">
+                <a href="{% url 'thank_you_o' %}">
+                    <button type="button" style="background-color: #007bff; color: #ffffff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                        Submit
+                    </button>
+                </a>
+                
+                
+             </div>
+        </form>
+    </div>
+</body>
+</html>

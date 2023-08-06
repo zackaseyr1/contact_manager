@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #cccccc;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .download-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .download-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Styling for the search form */
+        .search-form {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+        
+        .search-button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .search-button:hover {
+            background-color: #0056b3;
+        }
+        
+        .total-customers {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #666666;
+        }
+        
+        .delete-all-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .delete-all-button:hover {
+            background-color: #c82333;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact List</h1>
+        <form method="GET" action="{% url 'contact_list' %}" class="search-form">
+            <input type="text" name="q" value="{{ query }}" class="search-input" placeholder="Search contacts">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Region</th>
+                <th>Gender</th>
+                <th>Date</th>
+            </tr>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.phone_number }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.age }}</td>
+                <td>{{ contact.region }}</td>
+                <td>{{ contact.gender }}</td>
+                <td>{{ contact.date_added }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p class="total-customers">Total Customers: {{ total_count }}</p>
+        <a class="download-link" href="{% url 'export_emails' %}">Download Emails</a>
+        <a class="delete-all-button" href="{% url 'delete_all_confirm' %}">Delete All Contacts</a>
+    </div>
+</body>
+</html>
